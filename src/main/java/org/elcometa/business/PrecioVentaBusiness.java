@@ -15,6 +15,7 @@ public class PrecioVentaBusiness implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private PrecioVentaRepository precioVentaRepository;
 	
@@ -25,12 +26,12 @@ public class PrecioVentaBusiness implements Serializable{
 		return precioVentaRepository.insert(precioVenta);
 	}
 	
-	public List<PrecioVenta> findAll() throws Exception 
+	public List<PrecioVenta> listarPrecioVenta() throws Exception 
 	{
 		return precioVentaRepository.findAll();
 	}
 	
-	public List<PrecioVenta> findByClave(int clave) throws Exception 
+	public List<PrecioVenta> obtenerPrecioVentasPorClave(int clave) throws Exception 
 	{
 		return precioVentaRepository.findByClave(clave);
 	}
@@ -55,6 +56,7 @@ public class PrecioVentaBusiness implements Serializable{
 		
 		costoProduccion = precioVenta.getCostoMateriaPrima()+ costoManoObra + costoGastoFabricacion;
 		montoPrecioVenta = costoProduccion + (0.45*costoProduccion);
+		
 		return montoPrecioVenta;
 	}
 }
